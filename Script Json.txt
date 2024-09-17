@@ -1,0 +1,9 @@
+{
+  "name": "Felipe Pinheiro",
+  "email": "felipe@outlook.com",
+  "password": "123",
+  "gender": "Masculino",
+  "aged": false,
+  "timeOfService": 12,
+  "satisfied": false
+}
