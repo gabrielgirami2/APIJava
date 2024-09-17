@@ -22,7 +22,7 @@ CREATE TABLE customer (
     exit_forecast   DATE
 );
 
--- 2. Adicionando a chave primária
+-- 2. Adicionando a chave primÃ¡ria
 ALTER TABLE customer ADD CONSTRAINT customer_pk PRIMARY KEY ( id_customer );
 
 -- 3. Criando a sequence e os 5 registros da tabela "User"
@@ -35,7 +35,7 @@ CREATE SEQUENCE seq_customer
 
 
 
-INSERT INTO customer (id_customer, name, registration_dt, is_satisfied, aged, time_of_service, exit_forecast) VALUES (seq_customer.nextval, 'André', '01-01-2022', 0, 0, 18, '01-04-2023');
+INSERT INTO customer (id_customer, name, registration_dt, is_satisfied, aged, time_of_service, exit_forecast) VALUES (seq_customer.nextval, 'AndrÃ©', '01-01-2022', 0, 0, 18, '01-04-2023');
 INSERT INTO customer (id_customer, name, registration_dt, is_satisfied, aged, time_of_service, exit_forecast) VALUES (seq_customer.nextval, 'Eduardo', '04-03-1990', 1, 1, 45, '08-10-2028');
 INSERT INTO customer (id_customer, name, registration_dt, is_satisfied, aged, time_of_service, exit_forecast) VALUES (seq_customer.nextval, 'Felipe', '08-09-1985', 0, 1, 45, '02-12-2025');
 INSERT INTO customer (id_customer, name, registration_dt, is_satisfied, aged, time_of_service, exit_forecast) VALUES (seq_customer.nextval, 'Guilherme', '05-11-2015', 1, 1, 45, '10-08-2024');
@@ -52,7 +52,7 @@ CREATE TABLE company (
     branch                  VARCHAR2(15) NOT NULL
 );
 
--- 5. Adicionando a chave primária
+-- 5. Adicionando a chave primÃ¡ria
 ALTER TABLE company ADD CONSTRAINT company_pk PRIMARY KEY ( id_company );
 
 
@@ -83,7 +83,7 @@ CREATE TABLE feedback (
     company_id_company   INTEGER NOT NULL
 );
 
--- 8. Adicionando a chave primária
+-- 8. Adicionando a chave primÃ¡ria
 ALTER TABLE feedback ADD CONSTRAINT feedback_pk PRIMARY KEY ( id_feedback );
 
 -- 9. Adicionando as duas chaves estrangeiras
@@ -104,13 +104,13 @@ CREATE SEQUENCE seq_feedback
     MAXVALUE 10000
     NOCYCLE;
 
-INSERT INTO feedback (id_feedback, nm_customer, feeling, dt_feedback, company, customer_id_customer, company_id_company) VALUES (seq_feedback.nextval, 'André', 'Terrible', '15-03-2022', 'Microsoft', 1, 1);
+INSERT INTO feedback (id_feedback, nm_customer, feeling, dt_feedback, company, customer_id_customer, company_id_company) VALUES (seq_feedback.nextval, 'AndrÃ©', 'Terrible', '15-03-2022', 'Microsoft', 1, 1);
 INSERT INTO feedback (id_feedback, nm_customer, feeling, dt_feedback, company, customer_id_customer, company_id_company) VALUES (seq_feedback.nextval, 'Eduardo', 'Good', '07-09-1996', 'Amazon', 2, 2);
 INSERT INTO feedback (id_feedback, nm_customer, feeling, dt_feedback, company, customer_id_customer, company_id_company) VALUES (seq_feedback.nextval, 'Felipe', 'Awesome', '09-09-2015', 'Apple', 3, 3);
 INSERT INTO feedback (id_feedback, nm_customer, feeling, dt_feedback, company, customer_id_customer, company_id_company) VALUES (seq_feedback.nextval, 'Guilherme', 'Regular', '12-06-2023', 'Samsung', 4, 4);
 INSERT INTO feedback (id_feedback, nm_customer, feeling, dt_feedback, company, customer_id_customer, company_id_company) VALUES (seq_feedback.nextval, 'Matheus', 'Awesome', '03-02-2024', 'Samsung', 5, 4);
 
--- 11. Criação de um dicionário que armazena sentimentos
+-- 11. CriaÃ§Ã£o de um dicionÃ¡rio que armazena sentimentos
 CREATE TABLE dicionario_sentimentos (
     id_sentimento   NUMBER PRIMARY KEY,
     palavra_chave   VARCHAR2(100),
@@ -126,7 +126,7 @@ CREATE SEQUENCE seq_dicionario
     NOCYCLE;
     
     
--- 12. Inserir alguns dados no dicionário de sentimentos
+-- 12. Inserir alguns dados no dicionÃ¡rio de sentimentos
 INSERT INTO dicionario_sentimentos (id_sentimento, palavra_chave, peso) VALUES (seq_dicionario.nextval, 'pessimo', -1);
 INSERT INTO dicionario_sentimentos (id_sentimento, palavra_chave, peso) VALUES (seq_dicionario.nextval, 'ruim', -1);
 INSERT INTO dicionario_sentimentos (id_sentimento, palavra_chave, peso) VALUES (seq_dicionario.nextval, 'medio', 1);
@@ -151,19 +151,19 @@ CREATE SEQUENCE seq_frases
 
 
 -- 14. Inserir algumas frases na tabela de frases
-INSERT INTO frases (id_frase, frase) VALUES (seq_frases.nextval, 'O serviço foi muito bom e rápido.');
-INSERT INTO frases (id_frase, frase) VALUES (seq_frases.nextval, 'A comida estava ruim e o atendimento foi péssimo.');
-INSERT INTO frases (id_frase, frase) VALUES (seq_frases.nextval, 'O serviço foi mediano, nada a acrescentar.');
-INSERT INTO frases (id_frase, frase) VALUES (seq_frases.nextval, 'O serviço foi péssimo.');
-INSERT INTO frases (id_frase, frase) VALUES (seq_frases.nextval, 'O serviço foi excelente, estão de parabéns.');
+INSERT INTO frases (id_frase, frase) VALUES (seq_frases.nextval, 'O serviÃ§o foi muito bom e rÃ¡pido.');
+INSERT INTO frases (id_frase, frase) VALUES (seq_frases.nextval, 'A comida estava ruim e o atendimento foi pÃ©ssimo.');
+INSERT INTO frases (id_frase, frase) VALUES (seq_frases.nextval, 'O serviÃ§o foi mediano, nada a acrescentar.');
+INSERT INTO frases (id_frase, frase) VALUES (seq_frases.nextval, 'O serviÃ§o foi pÃ©ssimo.');
+INSERT INTO frases (id_frase, frase) VALUES (seq_frases.nextval, 'O serviÃ§o foi excelente, estÃ£o de parabÃ©ns.');
 
 
 
--- Procedures, Funções e Triggers
+-- Procedures, FunÃ§Ãµes e Triggers
 
 
 
--- 1ª Procedure: Seleciona duas tabelas usando o Join e exibe os dados em JSON 
+-- 1Âª Procedure: Seleciona duas tabelas usando o Join e exibe os dados em JSON 
 CREATE OR REPLACE PROCEDURE relatorio_feedbacks AS 
     CURSOR cur_feedbacks IS 
         SELECT a.id_customer, a.name, b.feeling 
@@ -184,7 +184,7 @@ EXCEPTION
     WHEN NO_DATA_FOUND THEN 
         DBMS_OUTPUT.PUT_LINE('Nenhum dado encontrado.');
     WHEN PROGRAM_ERROR THEN
-        DBMS_OUTPUT.PUT_LINE('Ocorreu um problema interno, considere refatorar se você desenvolveu.');
+        DBMS_OUTPUT.PUT_LINE('Ocorreu um problema interno, considere refatorar se vocÃª desenvolveu.');
     WHEN NOT_LOGGED_ON THEN
         DBMS_OUTPUT.PUT_LINE('Conecte-se ao servidor Oracle.');
     WHEN OTHERS THEN 
@@ -196,7 +196,7 @@ SET SERVEROUTPUT ON;
 EXEC relatorio_feedbacks();
 
 
--- 2ª Procedure: Lê dados da tabela e mostra valores anterior, atual e próximo 
+-- 2Âª Procedure: LÃª dados da tabela e mostra valores anterior, atual e prÃ³ximo 
 CREATE OR REPLACE PROCEDURE mostrar_valores AS 
     CURSOR cur IS 
         SELECT time_of_service,  
@@ -206,16 +206,16 @@ CREATE OR REPLACE PROCEDURE mostrar_valores AS
         FROM customer; 
 BEGIN 
     FOR rec IN cur LOOP 
-        DBMS_OUTPUT.PUT_LINE('Anterior: ' || rec.anterior || ', Atual: ' || rec.atual || ', Próximo: ' 
+        DBMS_OUTPUT.PUT_LINE('Anterior: ' || rec.anterior || ', Atual: ' || rec.atual || ', PrÃ³ximo: ' 
         || rec.proximo); 
     END LOOP; 
 EXCEPTION 
     WHEN NO_DATA_FOUND THEN 
         DBMS_OUTPUT.PUT_LINE('Nenhum dado encontrado.');
     WHEN STORAGE_ERROR THEN
-        DBMS_OUTPUT.PUT_LINE('A memória está cheia ou danificada. Considere verificá-la');
+        DBMS_OUTPUT.PUT_LINE('A memÃ³ria estÃ¡ cheia ou danificada. Considere verificÃ¡-la');
     WHEN ACCESS_INTO_NULL THEN
-        DBMS_OUTPUT.PUT_LINE('O Objeto da procedure não foi iniciado, inicie antes de chamar');
+        DBMS_OUTPUT.PUT_LINE('O Objeto da procedure nÃ£o foi iniciado, inicie antes de chamar');
     WHEN OTHERS THEN 
         DBMS_OUTPUT.PUT_LINE('Erro: ' || SQLERRM); 
 END mostrar_valores; 
@@ -224,7 +224,7 @@ END mostrar_valores;
 EXEC mostrar_valores();
 
 
--- 1ª Função: Transformar dados exibidos em JSON 
+-- 1Âª FunÃ§Ã£o: Transformar dados exibidos em JSON 
 CREATE OR REPLACE FUNCTION transform_json ( 
     p_id        IN INTEGER,  
     p_nome      IN VARCHAR2, 
@@ -241,37 +241,37 @@ BEGIN
     RETURN v_json; 
 EXCEPTION 
     WHEN VALUE_ERROR THEN 
-        RETURN 'Erro: Valor inválido.'; 
+        RETURN 'Erro: Valor invÃ¡lido.'; 
     WHEN PROGRAM_ERROR THEN 
-        RETURN 'Erro: Problema interno no código PL/SQL.';
+        RETURN 'Erro: Problema interno no cÃ³digo PL/SQL.';
     WHEN INVALID_NUMBER THEN
-        RETURN 'Falha na conversão de dados. Verifique o tipo de dado de cada atributo';
+        RETURN 'Falha na conversÃ£o de dados. Verifique o tipo de dado de cada atributo';
     WHEN OTHERS THEN 
         RETURN 'Erro inesperado: ' || SQLERRM; 
 END transform_json;
 /
 
 
--- 2ª Função: Verificação de Complexidade de Senha 
+-- 2Âª FunÃ§Ã£o: VerificaÃ§Ã£o de Complexidade de Senha 
 CREATE OR REPLACE FUNCTION verificar_complexidade_senha(p_senha IN VARCHAR2) 
 RETURN VARCHAR2 IS 
 BEGIN 
     IF LENGTH(p_senha) < 8 THEN 
         RETURN 'Senha fraca: Menos de 8 caracteres'; 
     ELSIF NOT REGEXP_LIKE(p_senha, '.*[0-9].*') THEN 
-        RETURN 'Senha fraca: Deve conter pelo menos um número'; 
+        RETURN 'Senha fraca: Deve conter pelo menos um nÃºmero'; 
     ELSIF NOT REGEXP_LIKE(p_senha, '.*[A-Z].*') THEN 
-        RETURN 'Senha fraca: Deve conter pelo menos uma letra maiúscula'; 
+        RETURN 'Senha fraca: Deve conter pelo menos uma letra maiÃºscula'; 
     ELSE 
         RETURN 'Senha forte'; 
     END IF; 
 EXCEPTION 
     WHEN VALUE_ERROR THEN 
-        RETURN 'Erro: Valor inválido para senha.'; 
+        RETURN 'Erro: Valor invÃ¡lido para senha.'; 
     WHEN NO_DATA_FOUND THEN 
         RETURN 'Nenhum dado encontrado.';
     WHEN STORAGE_ERROR THEN
-        RETURN 'A memória está cheia ou danificada. Considere verificá-la';    
+        RETURN 'A memÃ³ria estÃ¡ cheia ou danificada. Considere verificÃ¡-la';    
     WHEN OTHERS THEN 
         RETURN 'Erro inesperado: ' || SQLERRM; 
 END verificar_complexidade_senha; 
@@ -318,9 +318,9 @@ EXCEPTION
     WHEN NO_DATA_FOUND THEN 
         DBMS_OUTPUT.PUT_LINE('Nenhum dado encontrado.');
     WHEN PROGRAM_ERROR THEN 
-        DBMS_OUTPUT.PUT_LINE('Erro: Problema interno no código PL/SQL.');
+        DBMS_OUTPUT.PUT_LINE('Erro: Problema interno no cÃ³digo PL/SQL.');
     WHEN STORAGE_ERROR THEN
-        DBMS_OUTPUT.PUT_LINE('A memória está cheia ou danificada. Considere verificá-la');
+        DBMS_OUTPUT.PUT_LINE('A memÃ³ria estÃ¡ cheia ou danificada. Considere verificÃ¡-la');
     WHEN OTHERS THEN 
         DBMS_OUTPUT.PUT_LINE('Erro no gatilho de auditoria: ' || SQLERRM); 
 END trg_auditoria; 
